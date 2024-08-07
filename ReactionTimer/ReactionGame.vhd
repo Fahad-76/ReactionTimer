@@ -1,0 +1,142 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+USE work.mux2to1_package.all; 
+USE work.Dflipflop_package.all; 
+USE ieee.numeric_std.all;
+
+ENTITY ReactionGame IS 
+PORT ( 
+    play        	: in std_logic;
+	 soft_reset, next_round		: in std_logic;  
+    speed_select 	: in std_logic_vector (1 downto 0); 
+    CLOCK   		: in STD_LOGIC;
+    game_finish	: out std_logic; 
+    game_display	: out std_logic_vector (6 downto 0); 
+    win_state  	: out UNSIGNED (0 downto 0);
+	 random_BCD 	: in std_logic_vector (3 downto 0)
+);
+
+END ENTITY;
+
+ARCHITECTURE logic OF ReactionGame IS 
+
+COMPONENT BCDCount IS
+    PORT ( 
+        clear   : IN STD_LOGIC; 
+        enable  : IN STD_LOGIC;
+        clock   : IN STD_LOGIC; 
+        BCD0    : BUFFER  STD_LOGIC_VECTOR (3 downto 0)
+    );
+END COMPONENT;
+
+COMPONENT Clock_Prescaler IS
+     PORT (
+        Clkin   		: IN  STD_LOGIC; 
+        Clkout 		: OUT UNSIGNED (25 DOWNTO 0); 
+        reset   		: IN STD_LOGIC  -- Reset signal to initialize counter
+    );
+END COMPONENT;
+
+COMPONENT SegDecoder IS 
+    PORT (
+        D : in std_logic_vector (3 downto 0); 
+        Y : out std_logic_vector (6 downto 0)
+    ); 
+END COMPONENT;
+
+
+
+
+-- SIGNALS - - - - - - - - - - - - - - - - - - - - -
+SIGNAL M : std_logic; 
+SIGNAL Q : std_logic; 
+SIGNAL Clkout : std_logic; 
+SIGNAL W : std_logic_vector (3 downto 0); 
+
+SIGNAL correct : std_logic;
+SIGNAL stop : std_logic := '1';
+SIGNAL D_in : std_logic; 
+SIGNAL Q_in : std_logic; 
+SIGNAL clear_in : std_logic; 
+SIGNAL clk_reset : std_logic := '0'; 
+SIGNAL Clock_Signal: UNSIGNED (25 downto 0); 
+SIGNAL speed_select_signal : std_logic_vector (1 downto  0); 
+SIGNAL HEX_out 		: std_logic_vector ( 6 downto 0); 
+SIGNAL HEX_correct	: std_logic_vector ( 6 downto 0); 
+
+-- -- - - - - - - - - - - - - - - - - - - - - - - -
+BEGIN
+
+	 speed_select_signal <= speed_select; 
+    D_in <= M AND play AND stop;
+	 Q_in <= Q AND stop; 
+    clear_in <= NOT soft_reset;
+	 game_display <= HEX_out;
+	-- correct <= HEX_out(6) AND NOT HEX_out(5) AND NOT HEX_out(4) AND NOT HEX_out(3) AND NOT HEX_out(2) AND NOT HEX_out(1) AND NOT HEX_out(0);
+   
+	PROCESS (HEX_correct, CLOCK)
+	BEGIN 
+	if rising_edge (CLOCK) THEN 
+		if HEX_out = HEX_correct THEN 
+		correct <= '1'; 
+		else 
+		correct <= '0'; 
+	END IF ;
+	END IF;
+	END PROCESS;
+
+	-- VERIFY PROCESS
+    PROCESS (CLOCK)
+    BEGIN
+        IF rising_edge(CLOCK) THEN
+				IF (soft_reset = '0') or (next_round = '0') THEN 
+					stop <= '1'; 
+					game_finish <= '0';
+					win_state <= to_unsigned(0, 1);
+            ELSIF play = '0' THEN
+					IF correct = '1' then
+						stop <= '0';  -- Set stop to '0' when the condition is met
+						win_state <= to_unsigned(1, 1); 
+						game_finish <= '1'; 
+					ELSIF correct = '0'then
+						stop <= '0';
+						win_state <= to_unsigned(0, 1);
+						game_finish <= '1';
+					ELSE
+						game_finish <= '0';
+						win_state <= to_unsigned(0, 1);
+					END IF ;
+            END IF;
+        END IF;
+    END PROCESS;
+
+	 
+    -- Clock Prescaler
+    clockpre: Clock_Prescaler PORT MAP (CLOCK, Clock_Signal, clk_reset);
+	 
+
+PROCESS (speed_select_signal, Clock_Signal) 
+BEGIN 
+    CASE speed_select_signal IS
+        WHEN "00" =>
+            Clkout <= Clock_Signal(23);
+        WHEN "01" =>
+            Clkout <= Clock_Signal(22);
+        WHEN "10" =>
+            Clkout <= Clock_Signal(21);
+        WHEN OTHERS =>
+            Clkout <= Clock_Signal(20);
+    END CASE;
+END PROCESS;
+	 
+    -- Other Components
+    mux: MUX2to1 PORT MAP (Q, '1', '1', M);
+    ff: D_flipflop PORT MAP (D_in, Clkout, Q);
+    BCD: BCDCount PORT MAP (clear_in, Q_in, Clkout, W(3 downto 0)); 
+
+
+    -- Segment Decoder
+    segdecoder1: SegDecoder PORT MAP(W(3 downto 0), HEX_out);
+	 segdecoder2: SegDecoder PORT MAP (random_BCD,  HEX_correct);
+
+END logic;

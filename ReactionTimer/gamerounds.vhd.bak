@@ -1,0 +1,170 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity gamerounds is
+    port(
+        CLOCK 			: in  std_logic;
+		  play 			: in std_logic; 
+        nextround 	: in std_logic;
+        speed 			: in std_logic_vector(1 downto 0);
+        softreset  	: in std_logic;
+        hardreset 	: in std_logic;
+        gamedisplay 	: out std_logic_vector(6 downto 0);
+        results 		: out std_logic_vector(1 downto 0) := "00";
+        gameoff 		: out std_logic := '0';
+		  SEG7, SEG6, SEG5, SEG4			: out std_logic_vector (6 downto 0)
+		  
+    );
+end gamerounds;
+
+architecture logic of gamerounds is
+
+ -- signal declarations 
+    signal p1score : unsigned (1 downto 0) := (others => '0');
+    signal p2score : unsigned (1 downto 0) := (others => '0');
+	 
+    signal numberrounds : unsigned (2 downto 0) := (others => '0');
+    signal win_state : UNSIGNED (0 downto 0);
+    --signal play : std_logic;
+    signal gamefinish : std_logic;
+    signal roundsfinished: std_logic := '0'; -- Ensure proper initialization
+	 
+	 
+-- COMPONENTS  - - - - - - - - - - - - - - - - - - - - -  -
+ 
+
+ component ReactionGame is
+        PORT ( 
+				 play        	: in std_logic;
+				 soft_reset		: in std_logic;  
+				 speed_select 	: in std_logic_vector (1 downto 0); 
+				 CLOCK   		: in STD_LOGIC;
+				 game_finish	: out std_logic; 
+				 game_display	: out std_logic_vector (6 downto 0); 
+				 win_state  	: out UNSIGNED (0 downto 0)
+);
+    end component;
+
+	 
+	 
+-- PORT MAPS - - - - - -
+begin
+  
+    U1: ReactionGame 
+        port map(
+            play           => play,
+            soft_reset     => softreset, 
+            speed_select   => speed, 
+            CLOCK          => CLOCK,
+            game_finish    => gamefinish,
+            game_display   => gamedisplay,
+            win_state      => win_state
+        );
+		  
+-- LOGIC 
+
+	process (CLOCK, numberrounds)
+   begin 
+	
+	if gamefinish = '1' AND nextround = '0' then 
+		numberrounds <= numberrounds + 1; 
+		else
+		numberrounds <= numberrounds; 
+	end if;
+	end process;
+	
+    process (CLOCK, hardreset)
+    begin
+        if hardreset = '0' then
+            numberrounds <= (others => '0');
+            p1score <= (others => '0');
+            p2score <= (others => '0');
+            roundsfinished <= '0'; -- Reset roundsfinished on hardreset
+        
+		  elsif rising_edge(CLOCK) then
+            if gamefinish = '1' then
+						  
+					if nextround = '0' then
+						case numberrounds is
+                    when "000" | "010" | "100" =>		  
+                        p1score <= p1score + win_state;
+								--numberrounds <= numberrounds + 1;
+                    when "001" | "011" | "101" =>
+                        p2score <= p2score + win_state;
+								--numberrounds <= numberrounds + 1;
+                    when others =>
+                        roundsfinished <= '1';
+						  end case;
+						  numberrounds <= numberrounds + 1;
+                 
+					elsif softreset ='0'then 
+						numberrounds <= numberrounds; 
+					end if;
+				end if; 
+        end if;
+    end process;
+	 
+	 
+	process (numberrounds) 
+	begin 
+		case numberrounds is 
+			when "000" =>
+				 SEG7 <= "0001100";
+             SEG6 <= "1111001";
+             SEG5 <= "1001110";
+             SEG4 <= "1111001";
+			when "001" =>
+			    SEG7 <= "0001100";
+             SEG6 <= "1111001";
+             SEG5 <= "1001110";
+             SEG4 <= "1111001";
+			when "010" =>
+			    SEG7 <= "0001100";
+             SEG6 <= "1111001";
+             SEG5 <= "1001110";
+             SEG4 <= "0100100";
+			when "011" =>
+			    SEG7 <= "0001100";
+             SEG6 <= "1111001";
+             SEG5 <= "1001110";
+             SEG4 <= "0100100";
+			when "100" =>
+			    SEG7 <= "0001100";
+             SEG6 <= "1111001";
+             SEG5 <= "1001110";
+             SEG4 <= "0110000";
+			when "101" =>
+			    SEG7 <= "0001100";
+             SEG6 <= "1111001";
+             SEG5 <= "1001110";
+             SEG4 <= "0110000";
+		   when others =>
+			    SEG7 <= "1111111";
+             SEG6 <= "1111111";
+             SEG5 <= "1111111";
+             SEG4 <= "1111111"; 
+	      end case;
+end process;			
+   
+    process (CLOCK)
+    begin
+        if rising_edge(CLOCK) then
+            if roundsfinished = '1' then
+                if p1score > p2score then
+                    results <= "01"; -- p1 wins
+                    gameoff <= '1';
+                elsif p2score > p1score then
+                    results <= "10"; -- p2 wins
+                    gameoff <= '1';
+                elsif p1score = p2score then
+                    results <= "11"; -- tie
+                    gameoff <= '1';
+                else
+                    results <= "00";
+                end if;
+            end if;
+        end if;
+    end process;
+
+end logic;

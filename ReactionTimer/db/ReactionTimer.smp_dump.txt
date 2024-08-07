@@ -1,0 +1,13 @@
+
+State Machine - |gameplay|current_state
+Name current_state.Winner_Screen current_state.Game_Rounds current_state.Difficulty_Pick 
+current_state.Difficulty_Pick 0 0 0 
+current_state.Game_Rounds 0 1 1 
+current_state.Winner_Screen 1 0 1 
+
+State Machine - |gameplay|winnerscreen:U3|current_state
+Name current_state.TIE current_state.P2win current_state.P1win current_state.Default 
+current_state.Default 0 0 0 0 
+current_state.P1win 0 0 1 1 
+current_state.P2win 0 1 0 1 
+current_state.TIE 1 0 0 1 

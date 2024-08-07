@@ -1,0 +1,28 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all; 
+
+
+entity winnerscreen is
+port(
+	CLOCK 	: in std_logic; 
+	result 	: in UNSIGNED (1 downto 0); 
+	Seg0 		: out std_logic_vector(6 downto 0);
+--	Seg1 		: out std_logic_vector(6 downto 0);
+--	Seg2 		: out std_logic_vector(6 downto 0);
+	Seg3 		: out std_logic_vector(6 downto 0);
+	Seg4 		: out std_logic_vector(6 downto 0);
+	Seg5 		: out std_logic_vector(6 downto 0);
+	Seg6 		: out std_logic_vector(6 downto 0);
+	Seg7 		: out std_logic_vector(6 downto 0)
+	
+ );
+
+ end winnerscreen;
+
+architecture logic of winnerscreen is
+begin
+
+
+end logic;

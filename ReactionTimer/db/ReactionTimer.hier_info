@@ -1,0 +1,808 @@
+|gameplay
+clock_50 => BCDCount:B1.clock
+clock_50 => Debouncer:D1.Clock
+clock_50 => Debouncer:D2.Clock
+clock_50 => Debouncer:D3.Clock
+clock_50 => gamerounds:U2.CLOCK
+clock_50 => winnerscreen:U3.CLOCK
+clock_50 => current_state~1.DATAIN
+SW[2] => Selector1.IN5
+SW[2] => Selector2.IN4
+SW[2] => Selector14.IN5
+SW[2] => Selector54.IN5
+SW[2] => Selector76.IN3
+SW[2] => Selector91.IN3
+SW[2] => StateSelect:U1.game_start
+SW[2] => BCDCount:B1.enable
+SW[2] => Selector0.IN1
+SW[2] => current_state~3.DATAIN
+KEY[0] => Debouncer:D1.button
+KEY[1] => Debouncer:D2.button
+KEY[2] => Debouncer:D3.button
+KEY[3] => ~NO_FANOUT~
+HEX7[0] << HEX7[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX7[1] << HEX7[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX7[2] << HEX7[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX7[3] << HEX7[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX7[4] << HEX7[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX7[5] << HEX7[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX7[6] << HEX7[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[0] << HEX6[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[1] << HEX6[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[2] << HEX6[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[3] << HEX6[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[4] << HEX6[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[5] << HEX6[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX6[6] << HEX6[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[0] << HEX5[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[1] << HEX5[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[2] << HEX5[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[3] << HEX5[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[4] << HEX5[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[5] << HEX5[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX5[6] << HEX5[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[0] << HEX4[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[1] << HEX4[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[2] << HEX4[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[3] << HEX4[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[4] << HEX4[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[5] << HEX4[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX4[6] << HEX4[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[0] << HEX3[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[1] << HEX3[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[2] << HEX3[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[3] << HEX3[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[4] << HEX3[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[5] << HEX3[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX3[6] << HEX3[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[0] << HEX2[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[1] << HEX2[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[2] << HEX2[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[3] << HEX2[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[4] << HEX2[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[5] << HEX2[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX2[6] << HEX2[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[0] << HEX1[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[1] << HEX1[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[2] << HEX1[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[3] << HEX1[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[4] << HEX1[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[5] << HEX1[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX1[6] << HEX1[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[0] << HEX0[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[1] << HEX0[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[2] << HEX0[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[3] << HEX0[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[4] << HEX0[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[5] << HEX0[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+HEX0[6] << HEX0[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[0] << LEDG[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[1] << LEDG[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[2] << LEDG[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[3] << LEDG[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[4] << LEDG[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[5] << LEDG[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[6] << LEDG[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDG[7] << LEDG[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[0] << LEDR[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[1] << LEDR[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[2] << LEDR[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[3] << LEDR[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[4] << LEDR[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[5] << LEDR[5]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[6] << LEDR[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[7] << LEDR[7]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[8] << LEDR[8]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[9] << LEDR[9]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[10] << LEDR[10]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[11] << LEDR[11]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[12] << LEDR[12]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[13] << LEDR[13]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[14] << LEDR[14]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[15] << LEDR[15]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[16] << LEDR[16]$latch.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[17] << LEDR[17]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1
+clear => L[0].IN1
+enable => Count4:BCD_0.enable
+clock => Count4:BCD_0.clock
+BCD0[0] <= Count4:BCD_0.Q[0]
+BCD0[1] <= Count4:BCD_0.Q[1]
+BCD0[2] <= Count4:BCD_0.Q[2]
+BCD0[3] <= Count4:BCD_0.Q[3]
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0
+load => MUX2to1:gen_MUX:0:MUX2to1_inst.s
+load => MUX2to1:gen_MUX:1:MUX2to1_inst.s
+load => MUX2to1:gen_MUX:2:MUX2to1_inst.s
+load => MUX2to1:gen_MUX:3:MUX2to1_inst.s
+D[0] => MUX2to1:gen_MUX:0:MUX2to1_inst.w1
+D[1] => MUX2to1:gen_MUX:1:MUX2to1_inst.w1
+D[2] => MUX2to1:gen_MUX:2:MUX2to1_inst.w1
+D[3] => MUX2to1:gen_MUX:3:MUX2to1_inst.w1
+enable => E[0].IN1
+enable => S[0].IN1
+clock => D_flipflop:gen_FF:0:D_flipflop_inst.clk
+clock => D_flipflop:gen_FF:1:D_flipflop_inst.clk
+clock => D_flipflop:gen_FF:2:D_flipflop_inst.clk
+clock => D_flipflop:gen_FF:3:D_flipflop_inst.clk
+Q[0] <= D_flipflop:gen_FF:0:D_flipflop_inst.Q
+Q[1] <= D_flipflop:gen_FF:1:D_flipflop_inst.Q
+Q[2] <= D_flipflop:gen_FF:2:D_flipflop_inst.Q
+Q[3] <= D_flipflop:gen_FF:3:D_flipflop_inst.Q
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|MUX2to1:\gen_MUX:0:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|MUX2to1:\gen_MUX:1:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|MUX2to1:\gen_MUX:2:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|MUX2to1:\gen_MUX:3:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|D_flipflop:\gen_FF:0:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|D_flipflop:\gen_FF:1:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|D_flipflop:\gen_FF:2:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|BCDCount:B1|Count4:BCD_0|D_flipflop:\gen_FF:3:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|Debouncer:D1
+Clock => output~reg0.CLK
+Clock => count[0].CLK
+Clock => count[1].CLK
+Clock => count[2].CLK
+Clock => count[3].CLK
+Clock => count[4].CLK
+Clock => count[5].CLK
+Clock => count[6].CLK
+Clock => count[7].CLK
+Clock => count[8].CLK
+Clock => count[9].CLK
+Clock => count[10].CLK
+Clock => count[11].CLK
+Clock => count[12].CLK
+Clock => count[13].CLK
+Clock => count[14].CLK
+Clock => count[15].CLK
+Clock => count[16].CLK
+Clock => count[17].CLK
+Clock => count[18].CLK
+Clock => ff[0].CLK
+Clock => ff[1].CLK
+button => ff[0].DATAIN
+output <= output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|Debouncer:D2
+Clock => output~reg0.CLK
+Clock => count[0].CLK
+Clock => count[1].CLK
+Clock => count[2].CLK
+Clock => count[3].CLK
+Clock => count[4].CLK
+Clock => count[5].CLK
+Clock => count[6].CLK
+Clock => count[7].CLK
+Clock => count[8].CLK
+Clock => count[9].CLK
+Clock => count[10].CLK
+Clock => count[11].CLK
+Clock => count[12].CLK
+Clock => count[13].CLK
+Clock => count[14].CLK
+Clock => count[15].CLK
+Clock => count[16].CLK
+Clock => count[17].CLK
+Clock => count[18].CLK
+Clock => ff[0].CLK
+Clock => ff[1].CLK
+button => ff[0].DATAIN
+output <= output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|Debouncer:D3
+Clock => output~reg0.CLK
+Clock => count[0].CLK
+Clock => count[1].CLK
+Clock => count[2].CLK
+Clock => count[3].CLK
+Clock => count[4].CLK
+Clock => count[5].CLK
+Clock => count[6].CLK
+Clock => count[7].CLK
+Clock => count[8].CLK
+Clock => count[9].CLK
+Clock => count[10].CLK
+Clock => count[11].CLK
+Clock => count[12].CLK
+Clock => count[13].CLK
+Clock => count[14].CLK
+Clock => count[15].CLK
+Clock => count[16].CLK
+Clock => count[17].CLK
+Clock => count[18].CLK
+Clock => ff[0].CLK
+Clock => ff[1].CLK
+button => ff[0].DATAIN
+output <= output~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|StateSelect:U1
+level => counter[0].CLK
+level => counter[1].CLK
+game_start => speed[0].IN1
+game_start => speed[1].IN1
+game_start => state_seg6[2]$latch.LATCH_ENABLE
+game_start => state_seg6[0]$latch.LATCH_ENABLE
+game_start => state_seg6[3]$latch.LATCH_ENABLE
+game_start => state_seg6[4]$latch.LATCH_ENABLE
+game_start => state_seg6[6]$latch.LATCH_ENABLE
+reset => counter[0].PRESET
+reset => counter[1].ACLR
+state_seg7[0] <= <VCC>
+state_seg7[1] <= <VCC>
+state_seg7[2] <= <VCC>
+state_seg7[3] <= <GND>
+state_seg7[4] <= <GND>
+state_seg7[5] <= <GND>
+state_seg7[6] <= <VCC>
+speed[0] <= speed[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+speed[1] <= speed[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+state_seg6[0] <= state_seg6[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
+state_seg6[1] <= <GND>
+state_seg6[2] <= state_seg6[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
+state_seg6[3] <= state_seg6[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
+state_seg6[4] <= state_seg6[4]$latch.DB_MAX_OUTPUT_PORT_TYPE
+state_seg6[5] <= <VCC>
+state_seg6[6] <= state_seg6[6]$latch.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2
+CLOCK => ReactionGame:U1.CLOCK
+CLOCK => results[0]~reg0.CLK
+CLOCK => results[1]~reg0.CLK
+CLOCK => gameoff~reg0.CLK
+CLOCK => roundsfinished.CLK
+CLOCK => p2score[0].CLK
+CLOCK => p2score[1].CLK
+CLOCK => p1score[0].CLK
+CLOCK => p1score[1].CLK
+CLOCK => numberrounds[0].CLK
+CLOCK => numberrounds[1].CLK
+CLOCK => numberrounds[2].CLK
+play => ReactionGame:U1.play
+nextround => ReactionGame:U1.next_round
+nextround => numberrounds.OUTPUTSELECT
+nextround => numberrounds.OUTPUTSELECT
+nextround => numberrounds.OUTPUTSELECT
+nextround => p1score.OUTPUTSELECT
+nextround => p1score.OUTPUTSELECT
+nextround => p2score.OUTPUTSELECT
+nextround => p2score.OUTPUTSELECT
+nextround => roundsfinished.OUTPUTSELECT
+speed[0] => ReactionGame:U1.speed_select[0]
+speed[1] => ReactionGame:U1.speed_select[1]
+softreset => ReactionGame:U1.soft_reset
+hardreset => results[0]~reg0.ACLR
+hardreset => results[1]~reg0.ACLR
+hardreset => gameoff~reg0.ACLR
+hardreset => roundsfinished.ACLR
+hardreset => p2score[0].ACLR
+hardreset => p2score[1].ACLR
+hardreset => p1score[0].ACLR
+hardreset => p1score[1].ACLR
+hardreset => numberrounds[0].ACLR
+hardreset => numberrounds[1].ACLR
+hardreset => numberrounds[2].ACLR
+gamedisplay[0] <= ReactionGame:U1.game_display[0]
+gamedisplay[1] <= ReactionGame:U1.game_display[1]
+gamedisplay[2] <= ReactionGame:U1.game_display[2]
+gamedisplay[3] <= ReactionGame:U1.game_display[3]
+gamedisplay[4] <= ReactionGame:U1.game_display[4]
+gamedisplay[5] <= ReactionGame:U1.game_display[5]
+gamedisplay[6] <= ReactionGame:U1.game_display[6]
+results[0] <= results[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+results[1] <= results[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+gameoff <= gameoff~reg0.DB_MAX_OUTPUT_PORT_TYPE
+random_BCD[0] => ReactionGame:U1.random_BCD[0]
+random_BCD[0] => SegDecoder:B1.D[0]
+random_BCD[1] => ReactionGame:U1.random_BCD[1]
+random_BCD[1] => SegDecoder:B1.D[1]
+random_BCD[2] => ReactionGame:U1.random_BCD[2]
+random_BCD[2] => SegDecoder:B1.D[2]
+random_BCD[3] => ReactionGame:U1.random_BCD[3]
+random_BCD[3] => SegDecoder:B1.D[3]
+SEG7[0] <= Mux9.DB_MAX_OUTPUT_PORT_TYPE
+SEG7[1] <= Mux8.DB_MAX_OUTPUT_PORT_TYPE
+SEG7[2] <= <VCC>
+SEG7[3] <= <VCC>
+SEG7[4] <= Mux7.DB_MAX_OUTPUT_PORT_TYPE
+SEG7[5] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+SEG7[6] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+SEG6[0] <= Mux15.DB_MAX_OUTPUT_PORT_TYPE
+SEG6[1] <= Mux14.DB_MAX_OUTPUT_PORT_TYPE
+SEG6[2] <= Mux13.DB_MAX_OUTPUT_PORT_TYPE
+SEG6[3] <= Mux12.DB_MAX_OUTPUT_PORT_TYPE
+SEG6[4] <= Mux11.DB_MAX_OUTPUT_PORT_TYPE
+SEG6[5] <= <VCC>
+SEG6[6] <= Mux10.DB_MAX_OUTPUT_PORT_TYPE
+SEG5[0] <= Mux18.DB_MAX_OUTPUT_PORT_TYPE
+SEG5[1] <= <VCC>
+SEG5[2] <= <VCC>
+SEG5[3] <= <VCC>
+SEG5[4] <= Mux17.DB_MAX_OUTPUT_PORT_TYPE
+SEG5[5] <= Mux16.DB_MAX_OUTPUT_PORT_TYPE
+SEG5[6] <= <VCC>
+SEG4[0] <= Mux23.DB_MAX_OUTPUT_PORT_TYPE
+SEG4[1] <= Mux22.DB_MAX_OUTPUT_PORT_TYPE
+SEG4[2] <= numberrounds[1].DB_MAX_OUTPUT_PORT_TYPE
+SEG4[3] <= Mux21.DB_MAX_OUTPUT_PORT_TYPE
+SEG4[4] <= Mux20.DB_MAX_OUTPUT_PORT_TYPE
+SEG4[5] <= <VCC>
+SEG4[6] <= Mux19.DB_MAX_OUTPUT_PORT_TYPE
+SEG3[0] <= SegDecoder:B1.Y[0]
+SEG3[1] <= SegDecoder:B1.Y[1]
+SEG3[2] <= SegDecoder:B1.Y[2]
+SEG3[3] <= SegDecoder:B1.Y[3]
+SEG3[4] <= SegDecoder:B1.Y[4]
+SEG3[5] <= SegDecoder:B1.Y[5]
+SEG3[6] <= SegDecoder:B1.Y[6]
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1
+play => D_in.IN1
+play => game_finish.OUTPUTSELECT
+play => win_state.OUTPUTSELECT
+play => stop.OUTPUTSELECT
+soft_reset => BCDCount:BCD.clear
+soft_reset => process_1.IN0
+next_round => process_1.IN1
+speed_select[0] => Mux0.IN5
+speed_select[1] => Mux0.IN4
+CLOCK => Clock_Prescaler:clockpre.Clkin
+CLOCK => win_state[0]~reg0.CLK
+CLOCK => game_finish~reg0.CLK
+CLOCK => stop.CLK
+CLOCK => correct.CLK
+game_finish <= game_finish~reg0.DB_MAX_OUTPUT_PORT_TYPE
+game_display[0] <= SegDecoder:segdecoder1.Y[0]
+game_display[1] <= SegDecoder:segdecoder1.Y[1]
+game_display[2] <= SegDecoder:segdecoder1.Y[2]
+game_display[3] <= SegDecoder:segdecoder1.Y[3]
+game_display[4] <= SegDecoder:segdecoder1.Y[4]
+game_display[5] <= SegDecoder:segdecoder1.Y[5]
+game_display[6] <= SegDecoder:segdecoder1.Y[6]
+win_state[0] <= win_state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+random_BCD[0] => SegDecoder:segdecoder2.D[0]
+random_BCD[1] => SegDecoder:segdecoder2.D[1]
+random_BCD[2] => SegDecoder:segdecoder2.D[2]
+random_BCD[3] => SegDecoder:segdecoder2.D[3]
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|Clock_Prescaler:clockpre
+Clkin => count[0].CLK
+Clkin => count[1].CLK
+Clkin => count[2].CLK
+Clkin => count[3].CLK
+Clkin => count[4].CLK
+Clkin => count[5].CLK
+Clkin => count[6].CLK
+Clkin => count[7].CLK
+Clkin => count[8].CLK
+Clkin => count[9].CLK
+Clkin => count[10].CLK
+Clkin => count[11].CLK
+Clkin => count[12].CLK
+Clkin => count[13].CLK
+Clkin => count[14].CLK
+Clkin => count[15].CLK
+Clkin => count[16].CLK
+Clkin => count[17].CLK
+Clkin => count[18].CLK
+Clkin => count[19].CLK
+Clkin => count[20].CLK
+Clkin => count[21].CLK
+Clkin => count[22].CLK
+Clkin => count[23].CLK
+Clkin => count[24].CLK
+Clkin => count[25].CLK
+Clkout[0] <= count[0].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[1] <= count[1].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[2] <= count[2].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[3] <= count[3].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[4] <= count[4].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[5] <= count[5].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[6] <= count[6].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[7] <= count[7].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[8] <= count[8].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[9] <= count[9].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[10] <= count[10].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[11] <= count[11].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[12] <= count[12].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[13] <= count[13].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[14] <= count[14].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[15] <= count[15].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[16] <= count[16].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[17] <= count[17].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[18] <= count[18].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[19] <= count[19].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[20] <= count[20].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[21] <= count[21].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[22] <= count[22].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[23] <= count[23].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[24] <= count[24].DB_MAX_OUTPUT_PORT_TYPE
+Clkout[25] <= count[25].DB_MAX_OUTPUT_PORT_TYPE
+reset => count[0].ACLR
+reset => count[1].ACLR
+reset => count[2].ACLR
+reset => count[3].ACLR
+reset => count[4].ACLR
+reset => count[5].ACLR
+reset => count[6].ACLR
+reset => count[7].ACLR
+reset => count[8].ACLR
+reset => count[9].ACLR
+reset => count[10].ACLR
+reset => count[11].ACLR
+reset => count[12].ACLR
+reset => count[13].ACLR
+reset => count[14].ACLR
+reset => count[15].ACLR
+reset => count[16].ACLR
+reset => count[17].ACLR
+reset => count[18].ACLR
+reset => count[19].ACLR
+reset => count[20].ACLR
+reset => count[21].ACLR
+reset => count[22].ACLR
+reset => count[23].ACLR
+reset => count[24].ACLR
+reset => count[25].ACLR
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|MUX2to1:mux
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|D_flipflop:ff
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD
+clear => L[0].IN1
+enable => Count4:BCD_0.enable
+clock => Count4:BCD_0.clock
+BCD0[0] <= Count4:BCD_0.Q[0]
+BCD0[1] <= Count4:BCD_0.Q[1]
+BCD0[2] <= Count4:BCD_0.Q[2]
+BCD0[3] <= Count4:BCD_0.Q[3]
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0
+load => MUX2to1:gen_MUX:0:MUX2to1_inst.s
+load => MUX2to1:gen_MUX:1:MUX2to1_inst.s
+load => MUX2to1:gen_MUX:2:MUX2to1_inst.s
+load => MUX2to1:gen_MUX:3:MUX2to1_inst.s
+D[0] => MUX2to1:gen_MUX:0:MUX2to1_inst.w1
+D[1] => MUX2to1:gen_MUX:1:MUX2to1_inst.w1
+D[2] => MUX2to1:gen_MUX:2:MUX2to1_inst.w1
+D[3] => MUX2to1:gen_MUX:3:MUX2to1_inst.w1
+enable => E[0].IN1
+enable => S[0].IN1
+clock => D_flipflop:gen_FF:0:D_flipflop_inst.clk
+clock => D_flipflop:gen_FF:1:D_flipflop_inst.clk
+clock => D_flipflop:gen_FF:2:D_flipflop_inst.clk
+clock => D_flipflop:gen_FF:3:D_flipflop_inst.clk
+Q[0] <= D_flipflop:gen_FF:0:D_flipflop_inst.Q
+Q[1] <= D_flipflop:gen_FF:1:D_flipflop_inst.Q
+Q[2] <= D_flipflop:gen_FF:2:D_flipflop_inst.Q
+Q[3] <= D_flipflop:gen_FF:3:D_flipflop_inst.Q
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|MUX2to1:\gen_MUX:0:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|MUX2to1:\gen_MUX:1:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|MUX2to1:\gen_MUX:2:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|MUX2to1:\gen_MUX:3:MUX2to1_inst
+w0 => f.DATAB
+w1 => f.DATAA
+s => f.OUTPUTSELECT
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|D_flipflop:\gen_FF:0:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|D_flipflop:\gen_FF:1:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|D_flipflop:\gen_FF:2:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|BCDCount:BCD|Count4:BCD_0|D_flipflop:\gen_FF:3:D_flipflop_inst
+D => Q~reg0.DATAIN
+clk => Q~reg0.CLK
+Q <= Q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|SegDecoder:segdecoder1
+D[0] => Mux0.IN19
+D[0] => Mux1.IN19
+D[0] => Mux2.IN19
+D[0] => Mux3.IN19
+D[0] => Mux4.IN19
+D[0] => Mux5.IN19
+D[0] => Mux6.IN19
+D[1] => Mux0.IN18
+D[1] => Mux1.IN18
+D[1] => Mux2.IN18
+D[1] => Mux3.IN18
+D[1] => Mux4.IN18
+D[1] => Mux5.IN18
+D[1] => Mux6.IN18
+D[2] => Mux0.IN17
+D[2] => Mux1.IN17
+D[2] => Mux2.IN17
+D[2] => Mux3.IN17
+D[2] => Mux4.IN17
+D[2] => Mux5.IN17
+D[2] => Mux6.IN17
+D[3] => Mux0.IN16
+D[3] => Mux1.IN16
+D[3] => Mux2.IN16
+D[3] => Mux3.IN16
+D[3] => Mux4.IN16
+D[3] => Mux5.IN16
+D[3] => Mux6.IN16
+Y[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+Y[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Y[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Y[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|ReactionGame:U1|SegDecoder:segdecoder2
+D[0] => Mux0.IN19
+D[0] => Mux1.IN19
+D[0] => Mux2.IN19
+D[0] => Mux3.IN19
+D[0] => Mux4.IN19
+D[0] => Mux5.IN19
+D[0] => Mux6.IN19
+D[1] => Mux0.IN18
+D[1] => Mux1.IN18
+D[1] => Mux2.IN18
+D[1] => Mux3.IN18
+D[1] => Mux4.IN18
+D[1] => Mux5.IN18
+D[1] => Mux6.IN18
+D[2] => Mux0.IN17
+D[2] => Mux1.IN17
+D[2] => Mux2.IN17
+D[2] => Mux3.IN17
+D[2] => Mux4.IN17
+D[2] => Mux5.IN17
+D[2] => Mux6.IN17
+D[3] => Mux0.IN16
+D[3] => Mux1.IN16
+D[3] => Mux2.IN16
+D[3] => Mux3.IN16
+D[3] => Mux4.IN16
+D[3] => Mux5.IN16
+D[3] => Mux6.IN16
+Y[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+Y[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Y[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Y[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|gamerounds:U2|SegDecoder:B1
+D[0] => Mux0.IN19
+D[0] => Mux1.IN19
+D[0] => Mux2.IN19
+D[0] => Mux3.IN19
+D[0] => Mux4.IN19
+D[0] => Mux5.IN19
+D[0] => Mux6.IN19
+D[1] => Mux0.IN18
+D[1] => Mux1.IN18
+D[1] => Mux2.IN18
+D[1] => Mux3.IN18
+D[1] => Mux4.IN18
+D[1] => Mux5.IN18
+D[1] => Mux6.IN18
+D[2] => Mux0.IN17
+D[2] => Mux1.IN17
+D[2] => Mux2.IN17
+D[2] => Mux3.IN17
+D[2] => Mux4.IN17
+D[2] => Mux5.IN17
+D[2] => Mux6.IN17
+D[3] => Mux0.IN16
+D[3] => Mux1.IN16
+D[3] => Mux2.IN16
+D[3] => Mux3.IN16
+D[3] => Mux4.IN16
+D[3] => Mux5.IN16
+D[3] => Mux6.IN16
+Y[0] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+Y[4] <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+Y[5] <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+Y[6] <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|gameplay|winnerscreen:U3
+CLOCK => current_state~1.DATAIN
+reset => current_state~3.DATAIN
+result[0] => Mux0.IN5
+result[0] => Mux1.IN5
+result[0] => Mux2.IN5
+result[0] => Mux3.IN5
+result[1] => Mux0.IN4
+result[1] => Mux1.IN4
+result[1] => Mux2.IN4
+result[1] => Mux3.IN4
+Seg0[0] <= Seg0[0].DB_MAX_OUTPUT_PORT_TYPE
+Seg0[1] <= Seg0.DB_MAX_OUTPUT_PORT_TYPE
+Seg0[2] <= Seg0.DB_MAX_OUTPUT_PORT_TYPE
+Seg0[3] <= Seg0[3].DB_MAX_OUTPUT_PORT_TYPE
+Seg0[4] <= Seg0[4].DB_MAX_OUTPUT_PORT_TYPE
+Seg0[5] <= Seg0[5].DB_MAX_OUTPUT_PORT_TYPE
+Seg0[6] <= Seg0[3].DB_MAX_OUTPUT_PORT_TYPE
+Seg1[0] <= <VCC>
+Seg1[1] <= Seg1.DB_MAX_OUTPUT_PORT_TYPE
+Seg1[2] <= Seg1.DB_MAX_OUTPUT_PORT_TYPE
+Seg1[3] <= <VCC>
+Seg1[4] <= Seg0[3].DB_MAX_OUTPUT_PORT_TYPE
+Seg1[5] <= Seg0[3].DB_MAX_OUTPUT_PORT_TYPE
+Seg1[6] <= <VCC>
+Seg2[0] <= <VCC>
+Seg2[1] <= Seg2.DB_MAX_OUTPUT_PORT_TYPE
+Seg2[2] <= Seg2.DB_MAX_OUTPUT_PORT_TYPE
+Seg2[3] <= Seg2[3].DB_MAX_OUTPUT_PORT_TYPE
+Seg2[4] <= Seg2[4].DB_MAX_OUTPUT_PORT_TYPE
+Seg2[5] <= Seg2[5].DB_MAX_OUTPUT_PORT_TYPE
+Seg2[6] <= Seg0[3].DB_MAX_OUTPUT_PORT_TYPE
+Seg3[0] <= <VCC>
+Seg3[1] <= Seg3.DB_MAX_OUTPUT_PORT_TYPE
+Seg3[2] <= Seg3.DB_MAX_OUTPUT_PORT_TYPE
+Seg3[3] <= Seg3.DB_MAX_OUTPUT_PORT_TYPE
+Seg3[4] <= Seg3.DB_MAX_OUTPUT_PORT_TYPE
+Seg3[5] <= Seg3.DB_MAX_OUTPUT_PORT_TYPE
+Seg3[6] <= <VCC>
+Seg4[0] <= Seg4[0].DB_MAX_OUTPUT_PORT_TYPE
+Seg4[1] <= Seg4.DB_MAX_OUTPUT_PORT_TYPE
+Seg4[2] <= Seg4[2].DB_MAX_OUTPUT_PORT_TYPE
+Seg4[3] <= Seg4[0].DB_MAX_OUTPUT_PORT_TYPE
+Seg4[4] <= Seg4[0].DB_MAX_OUTPUT_PORT_TYPE
+Seg4[5] <= <VCC>
+Seg4[6] <= Seg4[0].DB_MAX_OUTPUT_PORT_TYPE
+Seg5[0] <= Seg5.DB_MAX_OUTPUT_PORT_TYPE
+Seg5[1] <= Seg5.DB_MAX_OUTPUT_PORT_TYPE
+Seg5[2] <= <VCC>
+Seg5[3] <= <VCC>
+Seg5[4] <= Seg5.DB_MAX_OUTPUT_PORT_TYPE
+Seg5[5] <= Seg5.DB_MAX_OUTPUT_PORT_TYPE
+Seg5[6] <= Seg5.DB_MAX_OUTPUT_PORT_TYPE
+Seg6[0] <= <VCC>
+Seg6[1] <= <VCC>
+Seg6[2] <= <VCC>
+Seg6[3] <= <VCC>
+Seg6[4] <= <VCC>
+Seg6[5] <= <VCC>
+Seg6[6] <= <VCC>
+RedL[0] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[1] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[2] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[3] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[4] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[5] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[6] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[7] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[8] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[9] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[10] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[11] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[12] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[13] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[14] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[15] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[16] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+RedL[17] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[0] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[1] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[2] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[3] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[4] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[5] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[6] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+GreenL[7] <= GreenL[0].DB_MAX_OUTPUT_PORT_TYPE
+Seg7[0] <= <VCC>
+Seg7[1] <= <VCC>
+Seg7[2] <= <VCC>
+Seg7[3] <= <VCC>
+Seg7[4] <= <VCC>
+Seg7[5] <= <VCC>
+Seg7[6] <= <VCC>
+
+
