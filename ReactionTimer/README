@@ -1,0 +1,5 @@
+The Reaction Time Tester game allows two players to test their reaction time by testing their
+accuracy in stopping at the right number. The speed of which the numbers cycle depends on the
+difficulty they pick at the Difficulty_Pick state. Each game has 6 rounds where player 1 and player 2
+take turns in trying to stop the counter at the displayed number. The points in each player is then
+tallied and the player with the most points win. If both players have the same points, then it is a tie.
